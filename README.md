@@ -58,10 +58,6 @@ UI/UX Design
 Frontend Development
 Installation
 
-Clone the repository:
-
-git clone https://github.com/yourusername/portfolio.git
-
 Navigate into the project folder:
 
 cd portfolio
