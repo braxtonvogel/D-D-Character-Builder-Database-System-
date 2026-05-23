@@ -1,81 +1,80 @@
-Braxton Vogel Portfolio
+# Dungeons & Dragons Character Builder Database System
 
-Personal portfolio website built with Next.js and React to showcase projects, certifications, technical skills, and software engineering experience.
+Python • Spring Boot • MySQL • Full-Stack Web Application
 
-Overview
+---
 
-This portfolio was created to serve as a central hub for my work as a Software Engineering student at Sam Houston State University. The site highlights projects, technical interests, certifications, and development experience in backend systems, UI/UX, and full-stack engineering.
+## Overview
 
-Features
-Responsive portfolio homepage
-Project showcase pages
-Certifications section
-Resume, GitHub, and LinkedIn integration
-Clean modern UI with Tailwind CSS
-Built using Next.js routing and components
-Technologies Used
-Next.js
-React
-Tailwind CSS
-TypeScript / JavaScript
-HTML & CSS
-Project Structure
-/app
-  /projects
-    /chat-server
-    /dnd-builder
-    /file-manager
-  /certifications
-  page.tsx
-Projects Included
-Chat Server
+This is a full-stack database-driven application for creating, managing, and validating *Dungeons & Dragons 5e* characters using a structured relational database and a Spring Boot backend architecture.
 
-A networking-based chat server built using Python sockets.
+Users can build complete D&D character profiles by selecting attributes such as class, species, background, spells, weapons, and feats. The system enforces relational integrity and ensures all data follows normalized database design principles, including proper handling of many-to-many relationships.
 
-Technologies:
+---
 
-Python
-Socket Programming
-Networking Concepts
-D&D Character Builder
+## Key Features
 
-A database-driven character creation system for tabletop RPGs.
+- Create, update, and delete D&D characters
+- Assign classes, species, backgrounds, feats, weapons, and spells
+- Enforce rule-based relationships (e.g., class-specific spell restrictions)
+- Fully normalized relational database design
+- Dynamic web interface using Spring Boot and Thymeleaf
+- Role-based system design (Player, Dungeon Master, Admin)
 
-Technologies:
+---
 
-Java
-Spring Boot
-SQL
-Database Design
-File Manager UI
+## System Architecture
 
-A frontend-focused file management interface emphasizing usability and design.
+### Technologies Used
 
-Technologies:
+- Spring Boot (MVC architecture, routing, dependency injection)
+- Java (JDK 17/21)
+- MySQL (Relational database management system)
+- MAMP (Local MySQL server environment)
+- Thymeleaf (Server-side HTML rendering)
+- Maven (Build and dependency management)
+- IntelliJ IDEA (Development environment)
+- GitHub (Version control and collaboration)
 
-React
-UI/UX Design
-Frontend Development
-Installation
+---
 
-Navigate into the project folder:
+## Database Design
 
-cd portfolio
+The system is built around a normalized relational schema with strong emphasis on many-to-many relationships.
 
-Install dependencies:
+### Core Entities
 
-npm install
+- Character  
+- Classes  
+- Species  
+- Backgrounds  
+- Spells  
+- Weapons  
+- Feats  
 
-Run the development server:
+### Example Schema Structure
 
-npm run dev
+- Character(CharID, CharName, CharLevel, STR, CON, DEX, WIS, INT, CHA, MaxHP)  
+- Classes(ClassName, PrimaryStat1, PrimaryStat2, HitDie)  
+- Spells(SpellName, SpellLevel, CastingTime, School, Duration, Range, Components, IsRitual)  
 
-Open in browser:
+### Relationship Tables
 
-http://localhost:3000
-Future Improvements
-Dark mode support
-Animated transitions
-Project filtering/search
-Blog section
-Deployment analytics
+- CharacterClasses(CharID, ClassName)  
+- CharacterSpellsPrepared(CharID, SpellName)  
+- CharacterWeapons(CharID, WeaponName)  
+- CharacterFeats(CharID, FeatName)  
+- CharacterSpecies(CharID, SpeciesName)  
+- CharacterBackground(CharID, BackgroundName)  
+
+---
+
+## Testing & Validation
+
+### SQL Functional Tests
+
+**Test Case 1: Verify Character Class Assignment**
+
+```sql
+SELECT CharID, CharName, ClassName
+FROM PlayerCharacter;
